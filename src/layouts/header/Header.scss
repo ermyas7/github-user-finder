@@ -1,0 +1,61 @@
+@import '../../assets/sass/abstract.scss';
+
+.navbar{
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-left{
+        display: flex;
+        font-size: 1.8rem;
+        align-items: center;
+        color: $color-white;
+        margin-left: 3rem;
+
+        i{
+            cursor: pointer;
+        }
+
+        &-brand{
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-left: .5rem;
+            cursor: pointer;
+        }
+    }
+
+    &-right{
+        align-self: stretch;
+        margin-right: 3rem;
+        display: flex;
+        align-items: center;
+        list-style: none;
+
+        &-item{
+            margin-left: 2rem;
+        }
+
+        &-link{
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: $color-white;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            transition: all .3s;
+            height: 6rem;
+            padding: 0 .5rem;
+
+            &:hover{
+                color: $color-primary;
+                background-color: $color-white;
+            }
+
+            &:active, &:visited{
+
+            }
+
+        }
+    }
+}

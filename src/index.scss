@@ -1,0 +1,27 @@
+@import './assets/sass/abstract.scss';
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 1.4rem;
+    font-family: sans-serif;
+}
+
+//global styles
+.bg-primary{
+    background-color: $color-primary;
+}
+
+.color-primary{
+    background-color: $color-primary;
+}
