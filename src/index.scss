@@ -18,10 +18,54 @@ body{
 }
 
 //global styles
+
+.container{
+    max-width: 100rem;
+    padding:2rem 4rem;
+    margin: 0 auto;
+}
+
 .bg-primary{
     background-color: $color-primary;
+}
+
+.bg-dark{
+    background-color: $color-dark;
 }
 
 .color-primary{
     background-color: $color-primary;
 }
+
+.card{
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0 1rem 4rem rgba($color-black, 0.15);
+
+    &>*:not(:last-child){
+        margin-bottom: 1rem;
+    }
+}
+
+.rounded{
+    border-radius: 50%;
+}
+
+.btn-small{
+    padding: .5rem 1.3rem;
+    display: inline-block;
+    border: none;
+    color: $color-white;
+    outline: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+
+    &, &:visited{
+        text-decoration: none;
+    }
+    
+}
+
