@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './Header.scss';
@@ -13,14 +14,14 @@ const Header = ({title, icon}) => {
       </div>
       <ul className="navbar-right">
         <li className="navbar-right-item">
-          <a href="/" className="navbar-right-link">
+          <Link  to="/" className="navbar-right-link">
             Home
-          </a>
+          </Link>
         </li>
         <li className="navbar-right-item">
-          <a href="#" className="navbar-right-link">
+          <Link to="/about" className="navbar-right-link">
             About
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

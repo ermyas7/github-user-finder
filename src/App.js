@@ -8,6 +8,7 @@ import Header from './components/layouts/header/Header';
 import Users from './container/users/Users';
 import Search from './container/users/search/Search';
 import Alert from './components/layouts/alert/Alert';
+import About from './components/pages/About';
 
 class App extends Component {
   state = {
@@ -54,6 +55,8 @@ class App extends Component {
               <Users users={users} isLoading={isLoading}/>
             </Fragment>
            ) }/>
+
+           <Route exact path='/about' component={About}/>
         </Switch>
 
         </div>
