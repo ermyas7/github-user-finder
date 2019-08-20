@@ -34,7 +34,11 @@ body{
 }
 
 .color-primary{
-    background-color: $color-primary;
+    color: $color-primary;
+}
+
+.color-secondary{
+    color: $color-secondary;
 }
 
 .card{
