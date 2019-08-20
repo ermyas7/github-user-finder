@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import axios from 'axios';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './App.scss';
 
@@ -21,7 +22,6 @@ class App extends Component {
       let url = `https://api.github.com/search/users?q=${user}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`;
 
       let res = await axios.get(url);
-      console.log(res)
       this.setState({users: res.data.items, isLoading: false});
     }catch(err){
       console.log(err);
@@ -39,17 +39,26 @@ class App extends Component {
     let {users, isLoading} = this.state;
     let showClear = users.length > 0? true : false;
     return (
-      <div className="App">
+      <Router>
+        <div className="App">
         <Header icon={'fab fa-github'} title={'Github Finder'}/>
         <div className="container">
-         <Alert alert={this.state.alert}/> 
-        <Search searchUsers={this.searchUsers}
-         showClear={showClear}
-         clearUser={this.clearUser}
-         setAlert={this.setAlert}/>  
-        <Users users={users} isLoading={isLoading}/>
+         <Alert alert={this.state.alert}/>
+        <Switch>
+          <Route exact path='/' render = { props => (
+            <Fragment>
+              <Search searchUsers={this.searchUsers}
+              showClear={showClear}
+              clearUser={this.clearUser}
+              setAlert={this.setAlert}/>  
+              <Users users={users} isLoading={isLoading}/>
+            </Fragment>
+           ) }/>
+        </Switch>
+
         </div>
       </div>
+      </Router>
     );
   }
 }

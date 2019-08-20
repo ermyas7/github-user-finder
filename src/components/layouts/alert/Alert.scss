@@ -1,0 +1,11 @@
+@import '../../../assets/sass/abstract.scss';
+
+.alert{
+    margin: 1rem 0;
+    padding: .5rem 1rem;
+    
+
+    &-light{
+        background-color: $color-light;
+    }
+}
