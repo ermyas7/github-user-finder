@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './Search.scss';
 
 
 class Search extends Component {
     state = {
         text: ''
+    }
+
+    static propTypes = {
+        searchUsers: PropTypes.func.isRequired
     }
 
     onChange = (evt) => this.setState({[evt.target.name]: evt.target.value})

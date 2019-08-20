@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import UserItem from './UserItem';
 import Spinner from '../../components/layouts/Spinner';
 
@@ -23,4 +25,9 @@ let style = {
     gridGap: '2rem'
 }
 
-export default Users
+Users.propTypes = {
+    users: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired
+}
+
+export default Users;
