@@ -18,8 +18,12 @@ class Search extends Component {
     onChange = (evt) => this.setState({[evt.target.name]: evt.target.value})
     onSubmit = (evt) => {
         evt.preventDefault();
-        this.props.searchUsers(this.state.text);
-        this.setState({text: ''});
+        if(this.state.text === ''){
+            this.props.setAlert('please enter something', 'light');
+        }else{
+            this.props.searchUsers(this.state.text);
+            this.setState({text: ''});
+        }
     }
     render() {
         return (

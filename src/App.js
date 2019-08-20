@@ -6,11 +6,13 @@ import './App.scss';
 import Header from './components/layouts/header/Header';
 import Users from './container/users/Users';
 import Search from './container/users/search/Search';
+import Alert from './components/layouts/alert/Alert';
 
 class App extends Component {
   state = {
     users: [],
-    isLoading: false
+    isLoading: false,
+    alert: null
   };
 
   searchUsers = async user => {
@@ -28,6 +30,11 @@ class App extends Component {
   }
 
   clearUser = () => this.setState({users: []})
+  setAlert = (msg, type) => {
+    this.setState({alert: {msg, type}});
+    setTimeout(() => this.setState({alert: null}), 4000);
+  }
+
   render(){
     let {users, isLoading} = this.state;
     let showClear = users.length > 0? true : false;
@@ -35,9 +42,11 @@ class App extends Component {
       <div className="App">
         <Header icon={'fab fa-github'} title={'Github Finder'}/>
         <div className="container">
+         <Alert alert={this.state.alert}/> 
         <Search searchUsers={this.searchUsers}
          showClear={showClear}
-         clearUser={this.clearUser}/>  
+         clearUser={this.clearUser}
+         setAlert={this.setAlert}/>  
         <Users users={users} isLoading={isLoading}/>
         </div>
       </div>
