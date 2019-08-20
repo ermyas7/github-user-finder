@@ -25,4 +25,21 @@
             background-color: $color-dark-light;
         }
     }
+
+    &-clear{
+        padding: .5rem 1.5rem;
+        font-size: 1.6rem;
+        color: $color-dark;
+        background-color: $color-light;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 1.5rem;
+
+        &:hover{
+            background-color: $color-dark-light;
+            color: $color-white;
+        }
+    }
 }

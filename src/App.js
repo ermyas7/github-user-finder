@@ -26,13 +26,18 @@ class App extends Component {
       this.setState({isLoading: false});
     } 
   }
+
+  clearUser = () => this.setState({users: []})
   render(){
     let {users, isLoading} = this.state;
+    let showClear = users.length > 0? true : false;
     return (
       <div className="App">
         <Header icon={'fab fa-github'} title={'Github Finder'}/>
         <div className="container">
-        <Search searchUsers={this.searchUsers}/>  
+        <Search searchUsers={this.searchUsers}
+         showClear={showClear}
+         clearUser={this.clearUser}/>  
         <Users users={users} isLoading={isLoading}/>
         </div>
       </div>
