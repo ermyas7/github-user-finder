@@ -3,7 +3,6 @@ import UserRepoItem from './UserRepoItem';
 import PropTypes from 'prop-types';
 
 const UserRepos = ({repos}) => {
-    console.log(repos);
     return (
         <Fragment>
             {
