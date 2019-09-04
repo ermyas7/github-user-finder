@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect} from 'react';
+import React, { Fragment, useEffect} from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -12,40 +12,32 @@ import About from './components/pages/About';
 import User from './container/users/user/User';
 
 import GithubState from './context/github/githubState';
-
+import AlertState from './context/alert/alertState';
 const App = () => {
-    const [alert, setAlert] = useState(null);
-
-  const updateAlert = (msg, type) => {
-    setAlert({msg, type});
-    setTimeout(() => setAlert(null), 4000);
-  }
-
   return (
     <GithubState>
-      <Router>
-        <div className="App">
-        <Header icon={'fab fa-github'} title={'Github Finder'}/>
-        <div className="container">
-          <Alert alert={alert}/>
-        <Switch>
-          <Route exact path='/' render = { props => (
-            <Fragment>
-              <Search
-              setAlert={updateAlert}/>  
-              <Users/>
-            </Fragment>
-            ) }/>
+      <AlertState>
+        <Router>
+          <div className="App">
+          <Header icon={'fab fa-github'} title={'Github Finder'}/>
+          <div className="container">
+            <Alert/>
+          <Switch>
+            <Route exact path='/' render = { props => (
+              <Fragment>
+                <Search/>  
+                <Users/>
+              </Fragment>
+              ) }/>
 
-            <Route exact path='/about' component={About}/>
-            <Route exact path='/user/:login' render={props => (
-              <User {...props}/>
-            )}/>
-        </Switch>
+              <Route exact path='/about' component={About}/>
+              <Route exact path='/user/:login' component={User}/>
+          </Switch>
 
+          </div>
         </div>
-      </div>
-      </Router>
+        </Router>
+      </AlertState>  
   </GithubState>    
   );
 }

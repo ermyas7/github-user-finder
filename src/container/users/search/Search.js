@@ -1,11 +1,13 @@
 import React, { useState, Fragment, useContext } from 'react';
 
 import GithubContext from './../../../context/github/githubContext';
+import AlertContext from './../../../context/alert/alertContext';
 import './Search.scss';
 
 
 const Search = ({ setAlert}) => {
     const gitContext = useContext(GithubContext);
+    const alertContext = useContext(AlertContext);
 
     const [text, setText] = useState('');
 
@@ -13,7 +15,7 @@ const Search = ({ setAlert}) => {
     const onSubmit = (evt) => {
         evt.preventDefault();
         if(text === ''){
-            setAlert('please enter something', 'light');
+            alertContext.setAlert('please enter something', 'light');
         }else{
             gitContext.searchUsers(text);
             setText('');
