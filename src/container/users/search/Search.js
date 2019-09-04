@@ -1,5 +1,4 @@
 import React, { useState, Fragment, useContext } from 'react';
-import PropTypes from 'prop-types';
 
 import GithubContext from './../../../context/github/githubContext';
 import './Search.scss';
@@ -29,17 +28,12 @@ const Search = ({searchUsers, setAlert, clearUser, showClear}) => {
                     <input type="submit" className="form-submit" value="Search"/>
                 </form>
                 {
-                 showClear &&  <button className="form-clear"
-                 onClick={clearUser}>Clear</button>
+                 gitContext.users.length > 0 &&  <button className="form-clear"
+                 onClick={gitContext.clearUser}>Clear</button>
                 }
                 
             </Fragment>    
         )
 }
-
-Search.propTypes = {
-    showClear: PropTypes.bool.isRequired,
-    clearUser: PropTypes.func.isRequired,
-};
 
 export default Search;

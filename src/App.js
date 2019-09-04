@@ -50,14 +50,11 @@ const App = () => {
     } 
   }
 
-  //clear user from previous search
-  const clearUser = () => setUsers([]);
   const updateAlert = (msg, type) => {
     setAlert({msg, type});
     setTimeout(() => setAlert(null), 4000);
   }
-
-  let showClear = users.length > 0? true : false;
+  
   return (
     <GithubState>
       <Router>
@@ -69,8 +66,6 @@ const App = () => {
           <Route exact path='/' render = { props => (
             <Fragment>
               <Search
-              showClear={showClear}
-              clearUser={clearUser}
               setAlert={updateAlert}/>  
               <Users users={users} isLoading={isLoading}/>
             </Fragment>
