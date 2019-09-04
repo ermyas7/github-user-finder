@@ -14,24 +14,7 @@ import User from './container/users/user/User';
 import GithubState from './context/github/githubState';
 
 const App = () => {
-    const [user, setUser] = useState({});
-    const [isLoading, setLoading] = useState(false);
-    const [repos, setRepos] = useState([]);
     const [alert, setAlert] = useState(null);
-  //get recent user repos
-  const getRepos = async user => {
-    try{
-      setLoading(true);;
-      let url = `https://api.github.com/users/${user}/repos?per_page=8&&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`;
-
-      let res = await axios.get(url);
-      setRepos(res.data);
-      setLoading(false);
-    }catch(err){
-      console.log(err);
-      setLoading(false);
-    } 
-  }
 
   const updateAlert = (msg, type) => {
     setAlert({msg, type});
@@ -56,9 +39,7 @@ const App = () => {
 
             <Route exact path='/about' component={About}/>
             <Route exact path='/user/:login' render={props => (
-              <User {...props}
-              getRepos={getRepos}
-              repos={repos}/>
+              <User {...props}/>
             )}/>
         </Switch>
 

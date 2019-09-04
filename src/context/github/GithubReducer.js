@@ -25,7 +25,15 @@ export default (state, action) => {
         case CLEAR_USER: 
             return{
                 ...state,
-                users: []
+                users: [],
+                isLoading: false
+            };
+            
+        case GET_REPOS:
+            return{
+                ...state,
+                repos: action.payload,
+                isLoading: false
             }    
 
         case SET_LOADING:

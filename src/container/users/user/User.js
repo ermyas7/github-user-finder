@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
-
 import './User.scss';
 import Spinner from '../../../components/layouts/Spinner';
 import UserCard from './UserCard';
@@ -10,9 +8,9 @@ import UserRepos from './UserRepos';
 
 import GithubContext from './../../../context/github/githubContext';
 
-const User = ({ match, getRepos, repos}) => {
+const User = ({match}) => {
     const githubContext = useContext(GithubContext);
-    const {user, getUser,  isLoading } = githubContext;
+    const {user, getUser,  isLoading,getRepos, repos } = githubContext;
     //memic component did mount
     useEffect( () => {
         getUser(match.params.login);
@@ -64,10 +62,6 @@ const User = ({ match, getRepos, repos}) => {
     )
 }
 
-User.propTypes = {
-    getRepos: PropTypes.func.isRequired,
-    repos: PropTypes.array.isRequired
-};
 
 export default User;
 
