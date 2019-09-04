@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,11 @@ import UserCard from './UserCard';
 import Status from './Status';
 import UserRepos from './UserRepos';
 
-const User = ({user, match, getUser, getRepos, isLoading, repos}) => {
+import GithubContext from './../../../context/github/githubContext';
+
+const User = ({ match, getRepos, repos}) => {
+    const githubContext = useContext(GithubContext);
+    const {user, getUser,  isLoading } = githubContext;
     //memic component did mount
     useEffect( () => {
         getUser(match.params.login);
@@ -61,10 +65,7 @@ const User = ({user, match, getUser, getRepos, isLoading, repos}) => {
 }
 
 User.propTypes = {
-    getUser: PropTypes.func.isRequired,
     getRepos: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    isLoading: PropTypes.bool.isRequired,
     repos: PropTypes.array.isRequired
 };
 

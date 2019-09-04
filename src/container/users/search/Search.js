@@ -4,7 +4,7 @@ import GithubContext from './../../../context/github/githubContext';
 import './Search.scss';
 
 
-const Search = ({searchUsers, setAlert, clearUser, showClear}) => {
+const Search = ({ setAlert}) => {
     const gitContext = useContext(GithubContext);
 
     const [text, setText] = useState('');

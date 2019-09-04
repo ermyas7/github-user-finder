@@ -14,27 +14,10 @@ import User from './container/users/user/User';
 import GithubState from './context/github/githubState';
 
 const App = () => {
-    const [users, setUsers] = useState([]);
     const [user, setUser] = useState({});
     const [isLoading, setLoading] = useState(false);
     const [repos, setRepos] = useState([]);
     const [alert, setAlert] = useState(null);
-
-  //get user detail
-  const getUser = async user => {
-    try{
-      setLoading(true);
-      let url = `https://api.github.com/users/${user}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`;
-
-      let res = await axios.get(url);
-      setUser(res.data);
-      setLoading(false);
-    }catch(err){
-      console.log(err);
-      setLoading(false);
-    } 
-  }
-
   //get recent user repos
   const getRepos = async user => {
     try{
@@ -54,7 +37,7 @@ const App = () => {
     setAlert({msg, type});
     setTimeout(() => setAlert(null), 4000);
   }
-  
+
   return (
     <GithubState>
       <Router>
@@ -67,13 +50,13 @@ const App = () => {
             <Fragment>
               <Search
               setAlert={updateAlert}/>  
-              <Users users={users} isLoading={isLoading}/>
+              <Users/>
             </Fragment>
             ) }/>
 
             <Route exact path='/about' component={About}/>
             <Route exact path='/user/:login' render={props => (
-              <User {...props} getUser={getUser} user={user} isLoading={isLoading}
+              <User {...props}
               getRepos={getRepos}
               repos={repos}/>
             )}/>
